@@ -8,10 +8,14 @@ const schemas = protobuf(fs.readFileSync(`${__dirname}/test.proto`));
 
 const buffer = 
 schemas.Course.encode({
-    id: 4,
+    id: 3,
     name: 'hh',
     lesson: []
 })
+console.log(schemas.Lesson.encode({
+    id:4,
+    title:'node'
+}))
 console.log(
     buffer
 );

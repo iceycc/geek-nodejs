@@ -1,3 +1,4 @@
 console.log('start require');
-require('./lib')
+let lib = require('./lib')
+console.log(lib)
 console.log('end require');

@@ -12,4 +12,9 @@ class Geektime extends EventEmitter {
     }
 }
 
+// geektime.addListener('newlesson', res=>{
+//     if(res.price<80){
+//         console.log('buy>>',res.price)
+//     }
+// })
 module.exports = new Geektime;

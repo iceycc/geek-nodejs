@@ -25,3 +25,10 @@ function createTemplate(templatePath) {
 }
 
 module.exports = createTemplate
+
+
+// const context = {
+//     include:function(){
+//         return te
+//     }
+// }

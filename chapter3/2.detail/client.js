@@ -1,3 +1,7 @@
+/**
+ * 全双工通信的 RPC调用
+ */
+
 const EasySock = require('easy_sock');
 
 const protobuf = require('protocol-buffers')
@@ -10,7 +14,7 @@ const easySock = new EasySock({
     timeout: 500,
     keepAlive: true
 })
-
+// 将需要发送的数据按协议进行二进制编码
 easySock.encode = function(data, seq) {
     const body = schemas.ColumnRequest.encode(data);
 
@@ -20,6 +24,7 @@ easySock.encode = function(data, seq) {
 
     return Buffer.concat([head, body])
 }
+// 将接收到的包进行解码，转换成js可操作的格式
 easySock.decode = function(buffer) {
     const seq = buffer.readInt32BE();
     const body = schemas.ColumnResponse.decode(buffer.slice(8));
@@ -29,6 +34,7 @@ easySock.decode = function(buffer) {
         seq
     }
 }
+// 判断当前数据包是否完整
 easySock.isReceiveComplete = function(buffer) {
     if (buffer.length < 8) {
         return 0
